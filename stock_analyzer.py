@@ -60,7 +60,17 @@ except ImportError:
     print("Missing dependency. Install with:  pip install yfinance pandas numpy")
     sys.exit(1)
 
+from flask import Flask
+import os
 
+app = Flask(__name__)
+
+@app.route('/')
+def home():
+    # --- YOUR ACTUAL CODE GOES HERE ---
+    # For example, if your script calculates something:
+
+  
 # ---------------------------------------------------------------------------
 # Timeframe configuration
 # yfinance does not natively support a 10-minute bar, so we build it by
@@ -628,3 +638,13 @@ def main():
 
 if __name__ == "__main__":
     main()
+
+    result_data = "Hello! This is the output of your Python script."
+    
+    # Return whatever text or HTML you want to display on the URL
+    return f"<h1>Script Output</h1><p>{result_data}</p>"
+
+if __name__ == "__main__":
+    # Web servers pass a PORT variable; Flask needs to listen to it
+    port = int(os.environ.get("PORT", 5000))
+    app.run(host="0.0.0.0", port=port)
