@@ -273,6 +273,15 @@ def home():
     # Return it wrapped inside an HTML preformatted tag to look nice in browser
     return f"<html><body style='font-family: monospace; background-color: #1e1e1e; color: #d4d4d4; padding: 20px;'><pre>{report_output}</pre></body></html>"
 
+"""
 if __name__ == "__main__":
     port = int(os.environ.get("PORT", 5000))
+    app.run(host="0.0.0.0", port=port)
+"""
+
+if __name__ == "__main__":
+    # Render assigns a port via environment variables (defaulting to 10000)
+    port = int(os.environ.get("PORT", 10000))
+    
+    # You MUST bind to 0.0.0.0 so external traffic can route in
     app.run(host="0.0.0.0", port=port)
