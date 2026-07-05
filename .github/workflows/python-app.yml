@@ -25,8 +25,11 @@ jobs:
       - name: Install dependencies
         run: |
           python -m pip install --upgrade pip
+              pip install numpy pandas yfinance
           # If your script has extra libraries (e.g., requests), install them here:
           if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
+
+
 
       - name: Run script
         run: python stock_analyzer.py  # Replace with your actual script filename
